@@ -1,0 +1,63 @@
+Problem Solution
+    - Server Main Thread
+      Your server program should take as a command line several control parameters. The first parameter is the maximum
+      length of message that it can receive. If none is provided, DEFAULT_LENGTH is used (where DEFAULT_LENGTH is a
+      named constant defined in your program). The program should also take as a parameter a port number on which to
+      listen for incoming connections. Similarly, if no port number is provided, your program should listen on
+      DEFAULT_PORT (defined in your program).
+      Three other parameters are the number of element cells in the ‘connection buffer’, the number of worker threads,
+      and the terminator character to end echoing for this client. These parameters are discussed in this document.
+      The main server thread will have two primary functions: 1) accept and distribute connection requests from
+      clients, and 2) construct a log file of all echo activities.
+
+      Connection Buffer Data
+      The cells in the connection buffer are filled by the main server thread. The cells are processed by the worker
+      threads. Each cell is to contain the connection socket, and the time at which the connection socket was received.
+
+
+Program implementation
+    - Using ```prompt> ./>make clean``` will remove the following files from the unpackDirectory. This should be
+    completed first to ensure there are no leftover files in the directory
+            rm server client server.o client.o
+    - Using ```prompt> ./>make``` will compile the .c file using the following flags 'Wall and Werror'
+            gcc -Wall -Werror -pthread -I.   -c -o server.o server.c
+            gcc -Wall -Werror -pthread -I. -o server server.c
+
+    - Using flags
+            -p option will set the following (PORT/sin_port)\n");
+            -a option will set the following (ADDRESS/sin_addr)\n");
+            -t option will set the following (DEFAULT_TERMINATING_STRING)\n");
+
+
+Complication Function Explanation
+    - Less complication functions will not be explained this assignmend in detail.  At this point, it is understood
+    that if/if else/else and conditional statements should be close to mastered.
+
+
+Program documentation
+    - # Basic Supported Function
+            Client will sent message(s)
+            Server will receive message(s) and store in log file
+
+
+      Exit status:
+       0  if OK,
+       1  if minor problems
+       2  if serious trouble
+
+Testing methods and
+- Testing input and output of client
+- Testing input and output of server through print statements and log file
+- Testing flags
+
+Results of applying the tests.
+- Testing input and output restrictions
+    This was completed through multiple attempts of the build in through multiple string values. The build ins are simple,
+    in a way where you would program them as they are strictly guided to be used.  A redesign is needed, but ultimately,
+    these are meant to be programmed cookie cutter.
+- Testing values to include outside of range to test seg faults
+    Since minimal numerical values are used in the console, this leaves the discussions up to the coded to correctly
+    place the flags, values, and variables begin the scenes.  Most of the trial and error was completed through the console,
+    but the majority of the word was completed on paper.  Tracking ints and making sure that your array was completed.
+- Testing built-ins (along with options)
+    Similar to the other values, options normally start at argv[1] except for the piped values depending on your parse.
